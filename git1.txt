@@ -1,0 +1,107 @@
+from django.db import models
+
+ from django.conf import settings
+
+ from ckeditor.fields import RichTextField
+
+
+
+# Create your models here.
+
+
+
+
+
+
+
+
+
+class Category(models.Model):
+
+title = models.CharField(max_length=200)
+
+def_str_(self):
+
+return self.title
+
+
+
+class Blog(models.Model):
+
+user models.Foreignkey(settings.AUTH_USER_MODEL, on_delete-models.CASCADE, blank True, null-True, related_name='blogs')
+
+
+
+author models.CharField(max_length=100)
+
+
+
+title models.CharField(max_length=200, unique=True)
+
+
+
+slug models.SlugField()
+
+
+
+body = RichTextField(blank=True, null=True)
+
+
+
+#body = models.TextField()
+
+
+
+img = models. ImageField(upload_to='img')
+
+
+
+created = models.DateTimeField(auto_now_add =True)
+
+
+
+updated models.DateTimeField(auto_now_add =True)
+
+
+
+featured models.BooleanField(default=False)
+
+
+
+category models.Foreignkey (Category, on_delete-models.CASCADE, related_name 'blogs", blank-True, null-True)
+
+
+
+def str(self):
+
+
+
+return f(self.author) (self.title}'
+
+
+
+class Comment(models.Model):
+
+
+
+models.TextField() body
+
+blog models.Foreignkey (Blog, on_delete=models.CASCADE, blank True, null=True, related_name='comments')
+
+user models.Foreignkey(settings.AUTH_USER_MODEL, on_delete-models. CASCADE, blank-True, null-True, related_name='comments')
+
+
+
+email = models.EmailField(max_length=150) comment_img = models. ImageField(upload_to='img')
+
+
+
+created models.DateTimeField(auto_now_add =True)
+
+
+
+def_str_(self):
+
+
+return self.body
+
